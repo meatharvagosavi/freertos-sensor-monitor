@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "author": "Atharva Gosavi",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-mpu6050", "id": "imu1", "top": -115, "left": 180, "attrs": {} },
+    { "type": "board-ssd1306", "id": "oled1", "top": 60, "left": 200, "attrs": { "i2cAddress": "0x3c" } },
+    { "type": "wokwi-pushbutton", "id": "btn1", "top": 200, "left": 190, "attrs": { "color": "green", "label": "ACK" } },
+    { "type": "wokwi-led", "id": "led1", "top": 150, "left": -130, "attrs": { "color": "red", "label": "ALARM" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 235, "left": -110, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-logic-analyzer", "id": "logic1", "top": -130, "left": -220, "attrs": { "channelNames": "SDA,SCL,D2,D3,D4,D5,D6,D7" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+
+    [ "imu1:VCC", "esp:3V3", "red", [] ],
+    [ "imu1:GND", "esp:GND.2", "black", [] ],
+    [ "imu1:SDA", "esp:21", "green", [] ],
+    [ "imu1:SCL", "esp:22", "blue", [] ],
+
+    [ "oled1:VCC", "esp:3V3", "red", [] ],
+    [ "oled1:GND", "esp:GND.2", "black", [] ],
+    [ "oled1:SDA", "esp:21", "green", [] ],
+    [ "oled1:SCL", "esp:22", "blue", [] ],
+
+    [ "btn1:1.l", "esp:4", "orange", [] ],
+    [ "btn1:2.l", "esp:GND.2", "black", [] ],
+
+    [ "esp:2", "r1:1", "red", [] ],
+    [ "r1:2", "led1:A", "red", [] ],
+    [ "led1:C", "esp:GND.1", "black", [] ],
+
+    [ "logic1:D0", "esp:21", "green", [] ],
+    [ "logic1:D1", "esp:22", "blue", [] ],
+    [ "logic1:GND", "esp:GND.1", "black", [] ]
+  ],
+  "dependencies": {}
+}
