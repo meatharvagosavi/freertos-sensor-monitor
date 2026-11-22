@@ -2,7 +2,7 @@
 
 A multi-task FreeRTOS firmware for the ESP32 that reads an MPU6050 sensor over I2C, filters the readings, shows them on an SSD1306 OLED and raises an alarm when the temperature goes above a limit. The project runs in the [Wokwi](https://wokwi.com) simulator, so no hardware is needed.
 
-**Live simulation:** _add your Wokwi project link here_
+**Live simulation:** https://wokwi.com/projects/481324616261850113
 
 ![Simulation screenshot](simulation.png)
 
